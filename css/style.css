@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+  --background: rgba(26, 166, 221, 0.9);
+  --link: rgb(31, 31, 31);
+  --hover: #f4f4f4;
+  --color1: rgba(26, 166, 221);
+  --color2: rgb(31, 31, 31);
+  --back1: rgb(31, 31, 31, 0.9);
+  --back2: rgba(26, 166, 221, 0.9);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  padding: 2rem;
+  margin: 0;
+}
+
+/* Header */
+
+#header {
+  background: var(--background);
+  text-align: center;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+}
+
+.logo {
+  color: #222;
+  letter-spacing: 0.1rem;
+  font-size: 2.5rem;
+  text-shadow: 0.1rem 0.1rem #222;
+}
+
+/* Nav */
+
+.nav-toggle {
+  display: none;
+}
+
+.nav-toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 1.6rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  display: block;
+  background: #fff;
+  height: 0.2rem;
+  width: 3.2rem;
+  border-radius: 0.5rem;
+  position: relative;
+}
+
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+  content: ' ';
+  position: absolute;
+}
+
+.nav-toggle-label span::before {
+  bottom: 0.8rem;
+}
+
+.nav-toggle-label span::after {
+  top: 0.8rem;
+}
+
+nav {
+  position: absolute;
+  text-align: left;
+  top: 100%;
+  left: 0;
+  background: var(--background);
+  width: 100%;
+  transform: scale(1, 0);
+  transform-origin: top;
+  transition: transform 400ms ease-in-out;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav li {
+  margin-bottom: 1.6rem;
+  margin-left: 1.6rem;
+}
+
+nav a {
+  color: var(--link);
+  text-decoration: none;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
+}
+
+nav a:hover {
+  color: var(--hover);
+}
+
+.nav-toggle:checked ~ nav {
+  transform: scale(1, 1);
+}
+
+.nav-toggle:checked ~ nav a {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 250ms;
+}
+
+/* Wrapper */
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: stretch;
+  align-items: stretch;
+  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.2),
+    -1rem -1rem 2rem rgba(0, 0, 0, 0.2), 1rem -1rem 2rem rgba(0, 0, 0, 0.2),
+    -1rem 1rem 2rem rgba(0, 0, 0, 0.2);
+  background-image: url('/img/header.jpg');
+  background-size: cover;
+  grid-column: 1 / span 3;
+  background-color: #333;
+}
+
+/* Container */
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr minmax(800px, 4fr) 1fr;
+  grid-template-rows: 1fr repeat(5) minmax(px);
+  grid-gap: 2.5rem;
+  justify-items: stretch;
+  align-items: stretch;
+  height: 100vh;
+}
+
+/* Content Blocks */
+
+#main,
+#content-1,
+#content-2 {
+  line-height: 1.8rem;
+  border-radius: 3rem;
+  font-size: 1.6rem;
+  padding: 1rem;
+}
+
+#main {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+  background-color: var(--back2);
+  color: var(--color2);
+}
+
+#content-1 {
+  grid-column: 2/3;
+  grid-row: 4 / 5;
+  background-color: var(--back1);
+  color: var(--color1);
+}
+
+#content-2 {
+  grid-column: 2/3;
+  grid-row: 5/6;
+  background-color: var(--back2);
+  color: var(--color2);
+  margin-bottom: 4.8rem;
+}
+
+/* Footer */
+
+#footer {
+  grid-column: 1/4;
+  padding: 1rem;
+  font-size: 2rem;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+/* Mobile Reductions */
+
+@media screen and (max-width: 801px) {
+  body {
+    padding: 0em;
+  }
+
+  .container {
+    all: unset;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0 0.8em;
+    margin-top: 8em;
+    height: auto;
+  }
+
+  #main,
+  #content-1,
+  #content-2 {
+    margin-bottom: 0.8em;
+  }
+
+  #content-2 {
+    margin-bottom: 1em;
+  }
+}
+
+/* Desktop Additions */
+
+@media screen and (min-width: 800px) {
+  /* Desktop Nav */
+
+  .nav-toggle-label {
+    display: none;
+  }
+
+  #header {
+    display: grid;
+    grid-template-columns: 1fr auto minmax(500px, 5fr) 1fr;
+    position: static;
+  }
+
+  .logo {
+    grid-column: 2 / 3;
+  }
+
+  nav {
+    all: unset;
+    grid-column: 3 / 4;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  nav ul {
+    display: flex;
+  }
+
+  nav li {
+    margin-left: 4.8em;
+    margin-bottom: 0;
+  }
+
+  nav a {
+    opacity: 1;
+    position: relative;
+  }
+
+  nav a::before {
+    content: ' ';
+    display: block;
+    height: 0.3em;
+    background: var(--hover);
+    position: absolute;
+    top: -0.6em;
+    border-radius: 0.5em;
+    left: 0;
+    right: 0;
+    transform: scale(0, 1);
+    transition: transform ease-in-out 250ms;
+  }
+
+  nav a:hover::before {
+    transform: scale(1, 1);
+  }
+
+  /*  Desktop Shadow Effects*/
+
+  #main,
+  #content-1,
+  #content-2 {
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.3);
+    transform: transform 300ms;
+  }
+
+  #main:hover,
+  #content-1:hover,
+  #content-2:hover {
+    transform: scale(1.005);
+    box-shadow: 0 0 2.5em rgba(0, 0, 0, 0.3);
+  }
+}
