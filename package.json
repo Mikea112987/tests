@@ -1,0 +1,24 @@
+{
+  "name": "mawebdesign",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikea112987/tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage" "https://mikea112987.github.io/test"
+  "bugs": {
+    "url": "https://github.com/Mikea112987/tests/issues"
+  },
+  "homepage": "https://github.com/Mikea112987/tests#readme",
+  "dependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
